@@ -1,3 +1,7 @@
 /playground
 /config
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env
 
