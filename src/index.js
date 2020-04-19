@@ -1,6 +1,6 @@
 const express=require('express');
 const app=express();
-const port=process.env.PORT||3000;
+const port=process.env.PORT;
 require('./db/mongoose.js');
 const User=require('./models/user.js');
 const Task=require('./models/task.js');
@@ -28,7 +28,7 @@ app.use(newRouteTask);
 
 
 app.listen(port,()=>{
-    console.log('Server is running')});
+    console.log('Server is running',+port)});
 
 
 
