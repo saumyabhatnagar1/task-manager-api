@@ -3,7 +3,7 @@ const User=require('../models/user.js');
 const auth=require('../middleware/auth.js')
 const multer=require('multer');
 const sharp=require('sharp')
-const {sendWelcomeEmail}=require('../emails/account')
+const {sendWelcomeEmail,sendCancelEmail}=require('../emails/account')
 const router=new express.Router();
 
 router.post('/users',async (req,res)=>{
@@ -106,6 +106,7 @@ router.delete('/users/me',auth,async (req,res)=>{
     //    return res.status(404).send();
     
         await req.user.remove()
+        sendCancelEmail(req.user.email,req.user.name)
        res.status(202).send(req.user)
     }
     catch(e)

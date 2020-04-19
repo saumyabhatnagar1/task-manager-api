@@ -19,8 +19,24 @@ const sendWelcomeEmail=(email,name)=>{
       }
 });
 
+
+}
+const sendCancelEmail=(email,name)=>{
+    const msg={
+        to:email,
+        from:'bhatnagar.saumya2000@gmail.com',
+        subject:'We will miss you',
+        text:`Thanks for using Task Manager Api,${name}. Regards Saumya.`
+    }
+    sgMail.send(msg).then((res)=>{
+        
+    }).catch((err)=>{
+        console.log(error.response.body)
+    })
 }
 module.exports={
+    sendCancelEmail,
     sendWelcomeEmail,
+
 
 }
